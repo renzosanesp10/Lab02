@@ -1,3 +1,10 @@
+<?php
+include_once('./php/getReclamo.php');
+$filas = mysqli_fetch_all($ejecutar);
+$estado = isset($_GET["estado"]);
+$idReclamo = isset($_GET["id"]);
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,30 +21,29 @@
 
 <body>
 
-    <div class="container my-auto vh-100">
+    <div class="container">
         <h1>Lista de Reclamos</h1>
+        <?php echo $idReclamo ?>
         <ol class="list-group list-group-numbered">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
+            <?php
+            foreach ($filas as $value) {
+                /* echo "DNI: " . $value[0] . "NOMBRE: " . $value[1] . "DOMICILIO: " . $value[2] . "<br>"; */
+                echo "<li class='list-group-item d-flex justify-content-between align-items-start'>";
+                echo "<div class='ms-2 me-auto'>";
+                echo "<div class='fw-bold'>" . "Nombre: " . $value[1] . " Correo: " . $value[4] . "</div>";
+                echo $value[5];
+                echo "</div>";
+                echo "<form class='d-flex justify-content-between' method='GET'>";
+                echo "<select class='form-select w-100' aria-label='Default select example' name='estado'>";
+                echo "<option selected>Estado</option>";
+                echo "<option value='0'>En espera</option>";
+                echo "<option value='1'>Revisado</option>";
+                echo "</select>";
+                echo "<button type='submit' class='btn btn-primary ms-2'>Guardar</button>";
+                echo "</form>";
+                echo "</li>";
+            }
+            ?>
         </ol>
 
     </div>

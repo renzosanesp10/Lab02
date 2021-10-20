@@ -35,7 +35,7 @@
                 <input type="text" class="form-control" id="telefono" name="telefono" placeholder="999941021">
 
                 <label for="floatingTextarea2">Reclamo</label>
-                <textarea class="form-control" name="reclamo" cols="30" rows="10" placeholder="Escribe tu Reclamo Aqui"></textarea>
+                <textarea class="form-control" name="reclamo" cols="30" rows="3" placeholder="Escribe tu Reclamo Aqui"></textarea>
 
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
