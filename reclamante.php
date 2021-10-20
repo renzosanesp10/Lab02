@@ -1,9 +1,4 @@
-<?php
-include_once('./php/getReclamo.php');
-$filas = mysqli_fetch_all($ejecutar);
-$estado = isset($_GET["estado"]);
-$idReclamo = isset($_GET["id"]);
-?>
+<?php include_once('./php/getReclamo.php'); ?>
 
 <!doctype html>
 <html lang="en">
@@ -23,7 +18,6 @@ $idReclamo = isset($_GET["id"]);
 
     <div class="container">
         <h1>Lista de Reclamos</h1>
-        <?php echo $idReclamo ?>
         <ol class="list-group list-group-numbered">
             <?php
             foreach ($filas as $value) {
@@ -38,6 +32,7 @@ $idReclamo = isset($_GET["id"]);
                 echo "<option value='0'>En espera</option>";
                 echo "<option value='1'>Revisado</option>";
                 echo "</select>";
+                echo "<input type='hidden' name='idReclamo' value='$value[7]' />";
                 echo "<button type='submit' class='btn btn-primary ms-2'>Guardar</button>";
                 echo "</form>";
                 echo "</li>";
