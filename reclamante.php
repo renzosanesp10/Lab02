@@ -27,7 +27,6 @@ $idReclamo = isset($_GET["id"]);
         <ol class="list-group list-group-numbered">
             <?php
             foreach ($filas as $value) {
-                /* echo "DNI: " . $value[0] . "NOMBRE: " . $value[1] . "DOMICILIO: " . $value[2] . "<br>"; */
                 echo "<li class='list-group-item d-flex justify-content-between align-items-start'>";
                 echo "<div class='ms-2 me-auto'>";
                 echo "<div class='fw-bold'>" . "Nombre: " . $value[1] . " Correo: " . $value[4] . "</div>";
